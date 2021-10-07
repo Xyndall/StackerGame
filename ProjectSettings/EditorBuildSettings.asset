@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/StackerGame.unity
+    guid: 5003a6f684a84594aa38975b80e0b1cc
   m_configObjects: {}
