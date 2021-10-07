@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class Manager : MonoBehaviour
+public class Manager1 : MonoBehaviour
 {
 
     
@@ -105,7 +105,7 @@ public class Manager : MonoBehaviour
         //LastPlatform = CurrentPlatform;
         //CurrentPlatform = Instantiate(LastPlatform);
         //CurrentPlatform.name = Level + "";
-        //CurrentPlatform.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.HSVToRGB((Level / 100f) % 1f, 1f, 1f));
+        //CurrentPlatform.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.HSVToRGB((Level / 50f) % 1f, 1f, 1f));
         //Level++;
         ////makes the camera focus on the current cubes position and moves the camera up by the current cubes position
         //Camera.main.transform.position = CurrentPlatform.transform.position + new Vector3(200, 70f, -200);
