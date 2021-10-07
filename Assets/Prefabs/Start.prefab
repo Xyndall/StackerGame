@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6280803249829747127}
   - component: {fileID: 6280803249829747126}
   - component: {fileID: 6280803249829747113}
-  - component: {fileID: 6280803249829747125}
+  - component: {fileID: 2177015346419662779}
   m_Layer: 0
   m_Name: Start
   m_TagString: Untagged
@@ -96,7 +96,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6280803249829747125
+--- !u!114 &2177015346419662779
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6280803249829747112}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ff59e1a7ba31ed40bd194026cede8b8, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d99dd55a83d750498adcaf19b5b171c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0

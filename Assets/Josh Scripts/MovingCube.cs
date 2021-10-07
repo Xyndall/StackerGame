@@ -22,6 +22,8 @@ public class MovingCube : MonoBehaviour
         GetComponent<Renderer>().material.color = GetRandomColor();
 
         transform.localScale = new Vector3(LastCube.transform.localScale.x, transform.localScale.y, LastCube.transform.localScale.z);
+
+        Debug.Log("OnEnable");
     }
 
     private Color GetRandomColor()
@@ -34,7 +36,16 @@ public class MovingCube : MonoBehaviour
         moveSpeed = 0;
         float hangover = GetHangover();
 
-        float max = MoveDirection == MoveDirection.Z ? LastCube.transform.localScale.z : LastCube.transform.localScale.x;
+        float max;
+        if(MoveDirection == MoveDirection.Z)
+        {
+            max = LastCube.transform.localScale.z;
+        }
+        else
+        {
+            max = LastCube.transform.localScale.x;
+        }
+
         if (Mathf.Abs(hangover) >= max)
         {
             LastCube = null;
@@ -42,14 +53,33 @@ public class MovingCube : MonoBehaviour
             SceneManager.LoadScene(0);
         }
 
-        float direction = hangover > 0 ? 1f : -1f;
+        
+
+        float direction;
+        if (hangover > 0)
+        {
+            direction = 1;
+        }
+        else
+        {
+            direction = -1f;
+        }
 
         if (MoveDirection == MoveDirection.Z)
+        {
             SplitCubeOnZ(hangover, direction);
+            Debug.Log("CubeZ");
+        }
+
         else
+        {
             SplitCubeOnX(hangover, direction);
+        }
+           
 
             LastCube = this;
+
+        Debug.Log("Stop");
     }
 
     private float GetHangover()
@@ -58,6 +88,8 @@ public class MovingCube : MonoBehaviour
             return transform.position.z - LastCube.transform.position.z;
         else
             return transform.position.x - LastCube.transform.position.x;
+
+        Debug.Log("GetHangover");
     }
 
     private void SplitCubeOnX(float hangover, float direction)
@@ -73,6 +105,8 @@ public class MovingCube : MonoBehaviour
         float fallingBlockXPostion = cubeEdge + fallingBlockSize / 2f * direction;
 
         SpawnDropCube(fallingBlockXPostion, fallingBlockSize);
+
+        Debug.Log("SplitCubeOnX");
     }
 
     private void SplitCubeOnZ(float hangover, float direction)
@@ -88,6 +122,8 @@ public class MovingCube : MonoBehaviour
         float fallingBlockZPostion = cubeEdge + fallingBlockSize / 2f * direction;
 
         SpawnDropCube(fallingBlockZPostion, fallingBlockSize);
+
+        Debug.Log("SplitCubeOnZ");
     }
 
     private void SpawnDropCube(float fallingBlockZPostion, float fallingBlockSize)
@@ -109,6 +145,8 @@ public class MovingCube : MonoBehaviour
         cube.GetComponent<Renderer>().material.color = GetComponent<Renderer>().material.color;
 
         Destroy(cube.gameObject, 1f);
+
+        Debug.Log("SpawnCubeOnDrop");
     }
 
     private void Update()
@@ -117,6 +155,8 @@ public class MovingCube : MonoBehaviour
             transform.position += transform.forward * Time.deltaTime * moveSpeed;
         else
             transform.position += transform.right * Time.deltaTime * moveSpeed;
+
+        
 
     }
 }
