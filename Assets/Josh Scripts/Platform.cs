@@ -39,10 +39,7 @@ public class Platform : MonoBehaviour
             speed = 0;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-
-        }
+        
         
 
     }
