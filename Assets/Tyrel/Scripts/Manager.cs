@@ -15,7 +15,7 @@ public class Manager : MonoBehaviour
     public int Level = 0;
     public bool endGame = false;
     public float speed = 120;
-
+    
 
     // Start is called before the first frame update
     void Start()
@@ -89,48 +89,54 @@ public class Manager : MonoBehaviour
             CurrentPlatform.transform.position = Vector3.Lerp(CurrentPlatform.transform.position, LastPlatform.transform.position, 0.5f) + Vector3.up * 5f;
 
             //if the currentcubes x or z scale is less than or equals 0 rnd the game
-            if (CurrentPlatform.transform.localScale.x <= 0f ||
-               CurrentPlatform.transform.localScale.z <= 0f)
-            {
-                endGame = true;
-                Score.gameObject.SetActive(true);
-                Score.text = "Your Score: " + Level;
-                StartCoroutine(End());
-                return;
-            }
+            //if (CurrentPlatform.transform.localScale.x <= 0f ||
+            //   CurrentPlatform.transform.localScale.z <= 0f)
+            //{
+            //    endGame = true;
+            //    Score.gameObject.SetActive(true);
+            //    Score.text = "Your Score: " + Level;
+            //    StartCoroutine(End());
+            //    return;
+            //}
 
         }
 
-        ////instantiates a new current cube from the last cube
-        //LastPlatform = CurrentPlatform;
-        //CurrentPlatform = Instantiate(LastPlatform);
-        //CurrentPlatform.name = Level + "";
-        //CurrentPlatform.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.HSVToRGB((Level / 100f) % 1f, 1f, 1f));
-        //Level++;
-        ////makes the camera focus on the current cubes position and moves the camera up by the current cubes position
-        //Camera.main.transform.position = CurrentPlatform.transform.position + new Vector3(200, 70f, -200);
-        //Camera.main.transform.LookAt(CurrentPlatform.transform.position + Vector3.down * 30f);
-        //Score.text = Level + "";
-    }
-
-    public void InstantiatePlatform()
-    {
         //instantiates a new current cube from the last cube
         LastPlatform = CurrentPlatform;
         CurrentPlatform = Instantiate(LastPlatform);
         CurrentPlatform.name = Level + "";
-        CurrentPlatform.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.HSVToRGB((Level / 100f) % 1f, 1f, 1f));
+        
+        //CurrentPlatform.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.HSVToRGB((Level / 100f) % 1f, 1f, 1f));
         Level++;
         //makes the camera focus on the current cubes position and moves the camera up by the current cubes position
-        Camera.main.transform.position = CurrentPlatform.transform.position + new Vector3(200, 70f, -200);
-        Camera.main.transform.LookAt(CurrentPlatform.transform.position + Vector3.down * 30f);
+        
         Score.text = Level + "";
     }
 
+    //public void InstantiatePlatform()
+    //{
+    //    //instantiates a new current cube from the last cube
+    //    LastPlatform = CurrentPlatform;
+    //    CurrentPlatform = Instantiate(LastPlatform);
+    //    CurrentPlatform.name = Level + "";
+    //    CurrentPlatform.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.HSVToRGB((Level / 100f) % 1f, 1f, 1f));
+    //    Level++;
+    //    //makes the camera focus on the current cubes position and moves the camera up by the current cubes position
+    //    Camera.main.transform.position = CurrentPlatform.transform.position + new Vector3(200, 70f, -200);
+    //    Camera.main.transform.LookAt(CurrentPlatform.transform.position + Vector3.down * 30f);
+    //    Score.text = Level + "";
+    //}
 
-    IEnumerator End()
+    public void CameraLook()
     {
-        yield return new WaitForSeconds(5f);
-        SceneManager.LoadScene(0);
+        Camera.main.transform.position = CurrentPlatform.transform.position + new Vector3(200, 70f, -200);
+        Camera.main.transform.LookAt(LastPlatform.transform.position + Vector3.down * 30f);
     }
+
+
+    //IEnumerator End()
+    //{
+    //    yield return new WaitForSeconds(5f);
+    //    SceneManager.LoadScene(0);
+    //}
 }
